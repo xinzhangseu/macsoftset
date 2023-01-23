@@ -1,0 +1,47 @@
+project:
+  type: book
+  output-dir: _book
+lang: zh
+
+
+book:
+  title: "科研工具介绍"
+  author: "张鑫"
+  date: "1/8/2023"
+  chapters:
+    - index.qmd
+    - MacSettings.qmd
+    - Routers.qmd
+    - summary.qmd
+    - references.qmd
+  search: true
+  downloads: [pdf]
+  page-navigation: true
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    crossref:
+      chapters: true
+      eq-prefix: ""
+  pdf:
+    documentclass: elegantbook
+    classoption: [lang=cn,10pt]
+    keep-tex: true
+    include-in-header: 
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body: 
+      text: |
+        \printindex
+    colorlinks: true
+    link-citations: true
+    crossref:
+      chapters: true
+      eq-prefix: ""
+
+editor: visual
+
