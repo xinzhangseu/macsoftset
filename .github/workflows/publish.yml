@@ -35,6 +35,7 @@ jobs:
       - name: add tex package
         run: |
           tlmgr --version
+          tlmgr option repository ctan
           tlmgr install elegantbook
           tlmgr list --only-installed
       
