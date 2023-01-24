@@ -36,7 +36,8 @@ jobs:
         run: |
           tlmgr --version
           tlmgr option repository ctan
-          tlmgr install https://ctan.org/pkg/elegantbook
+          tlmgr update --all
+          tlmgr install elegantbook
           tlmgr list --only-installed
       
       - name: Render and Publish 
