@@ -69,7 +69,6 @@ jobs:
           fc-list | sort
           fc-cache -fsv
 
-     
       - name: Install LaTeX packages
         run: |
           if(!require('tinytex')) install.packages('tinytex')
@@ -86,7 +85,6 @@ jobs:
         run: |
           xvfb-run Rscript -e 'capabilities()'
 
-     
       - name: Render book to all format
         # Add any command line argument needed
         run: |
