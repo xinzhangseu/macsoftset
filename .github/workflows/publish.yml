@@ -1,48 +1,119 @@
 on:
   workflow_dispatch:
+  schedule:
+    # 每周四 早上 7 点
+    - cron: '0 23 * * 3'
   push:
+    branches: main
+  pull_request:
     branches: main
 
 name: Quarto Publish to Netlify
 
+env:
+  isExtPR: ${{ github.event.pull_request.head.repo.fork == true }}
+  RUST_BACKTRACE: 1
+
 jobs:
   build-deploy:
-    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[docker]')"
+    runs-on: ubuntu-22.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      DISPLAY: ':99.0'
+      RGL_USE_NULL: true
+      LANG: "en_US.UTF-8"
+      TZ: "Asia/Shanghai"
+      RETICULATE_PYTHON_ENV: "/opt/.virtualenvs/r-tensorflow"
+      CMDSTAN_VERSION: "2.29.2"
+      CMDSTAN: "/opt/cmdstan/cmdstan-2.29.2"
+      CMDSTANR_NO_VER_CHECK: true
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3 
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: '2.19.2'
 
-      - name: Set up Quarto
+      - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with: 
-          tinytex: true
-        
-      - name: Install R
-        uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.2.0'
-      
-      - name: Install R Dependencies 
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages:
-            any::knitr
-            any::rmarkdown
-            any::remotes
+          version: 1.2.280
+      - run: |
+          quarto --version
+          quarto pandoc --version
+          pandoc --version
 
-      - name: setup tinytex
+      - name: Install TinyTeX
         uses: r-lib/actions/setup-tinytex@v2
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
-      
-      - name: add TeX Packages
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          r-version: '4.2.2'
+          extra-repositories: 'https://mc-stan.org/r-packages'
+
+      # based on the renv lockfile file
+      # - uses: r-lib/actions/setup-renv@v2
+      # based on the DESCRIPTION file
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          needs: book
+
+      - name: Install Fonts From System
         run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-          tinytex::parse_install(text = "LaTeX Error: File `elegantbook.cls' not found.")
+          sudo apt-get install -y fonts-noto-core fonts-noto-cjk fonts-noto-color-emoji
+          fc-list | grep 'noto' | sort
+          fc-list | sort
+          fc-cache -fsv
+
+      - name: Install Python ENV
+        run: |
+          sudo apt-get install -y virtualenv python3-virtualenv
+          virtualenv -p /usr/bin/python3 $RETICULATE_PYTHON_ENV
+          source $RETICULATE_PYTHON_ENV/bin/activate
+          python -V
+          pip install -r requirements.txt
+          pip list --format=columns
+          deactivate
+
+      - name: Check Python
+        run: |
+          if(!require('reticulate')) install.packages('reticulate')
+          reticulate::py_config()
         shell: Rscript {0}
-        
+
+      - name: Install LaTeX packages
+        run: |
+          if(!require('tinytex')) install.packages('tinytex')
+          tinytex::tlmgr_install(readLines("texlive.txt"))
+        shell: Rscript {0}
+
+      - name: Check TikZ
+        run: |
+          if(!require('tikzDevice')) install.packages('tikzDevice')
+          tikzDevice::tikzTest()
+        shell: Rscript {0}
+
+      - name: Check R and xvfb
+        run: |
+          xvfb-run Rscript -e 'capabilities()'
+
+      - name: Build CmdStan
+        run: |
+          mkdir -p /opt/cmdstan
+          curl -fLo cmdstan-${CMDSTAN_VERSION}.tar.gz https://github.com/stan-dev/cmdstan/releases/download/v${CMDSTAN_VERSION}/cmdstan-${CMDSTAN_VERSION}.tar.gz
+          tar -xzf cmdstan-${CMDSTAN_VERSION}.tar.gz -C /opt/cmdstan/
+          cd ${CMDSTAN}
+          make build
+
+      - name: Render book to all format
+        # Add any command line argument needed
+        run: |
+          make all
+
       - name: Render and Publish 
         uses: quarto-dev/quarto-actions/publish@v2
         with:
