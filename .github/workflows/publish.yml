@@ -3,10 +3,10 @@ on:
   schedule:
     # 每周四 早上 7 点
     - cron: '0 23 * * 3'
-  push:
-    branches: main
-  pull_request:
-    branches: main
+  #push:
+    #branches: main
+  #pull_request:
+    #branches: main
 
 name: Quarto Publish to Netlify
 
