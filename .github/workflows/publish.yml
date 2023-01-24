@@ -25,11 +25,15 @@ jobs:
       - name: Install R Dependencies 
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages:
-            any::knitr
-            any::rmarkdown
-            any::downlit
-            any::xml2
+          extra-packages: any::rcmdcheck
+          needs: check
+
+      - name: add tex packages
+        uses: r-lib/actions/setup-tinytex@v2
+        run: |
+          tlmgr --version
+          tlmgr install elegantbook
+          tlmgr list --only-installed
       
       - name: Render and Publish 
         uses: quarto-dev/quarto-actions/publish@v2
