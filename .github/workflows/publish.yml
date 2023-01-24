@@ -34,6 +34,11 @@ jobs:
         env:
           # install full prebuilt version
           TINYTEX_INSTALLER: TinyTeX
+      
+      - name: add TeX Packages
+        run: |
+          tinytex::tlmgr_install(pkgs = "elegantbook")
+        shell: Rscript {0}
         
       - name: Render and Publish 
         uses: quarto-dev/quarto-actions/publish@v2
