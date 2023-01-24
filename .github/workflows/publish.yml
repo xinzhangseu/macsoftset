@@ -36,7 +36,7 @@ jobs:
         run: |
           tlmgr --version
           tlmgr option repository https://mirrors.aliyun.com/CTAN/systems/texlive/tlnet
-          tlmgr install elegantbook
+          tlmgr install ElegantBook
           tlmgr list --only-installed
       
       - name: Render and Publish 
