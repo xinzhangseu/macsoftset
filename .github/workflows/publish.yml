@@ -28,9 +28,11 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: add tex packages
-      - uses: r-lib/actions/setup-tinytex@v2
-      - run: |
+      - name: setup tinytex
+        uses: r-lib/actions/setup-tinytex@v2
+        
+      - name: add tex package
+        run: |
           tlmgr --version
           tlmgr install elegantbook
           tlmgr list --only-installed
