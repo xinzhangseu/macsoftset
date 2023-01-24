@@ -28,6 +28,7 @@ jobs:
           packages:
             any::knitr
             any::rmarkdown
+            any::remotes
 
       - name: setup tinytex
         uses: r-lib/actions/setup-tinytex@v2
