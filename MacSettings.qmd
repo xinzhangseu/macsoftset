@@ -133,7 +133,7 @@ SSH登录安全性由非对称加密保证，产生密钥时，一次产生两�
     **Conda**
 
     | Install:                                 | Upgrade:                                |
-    |------------------------------------------|-----------------------------------------|
+    |------------------------------------|------------------------------------|
     | `conda install gh --channel conda-forge` | `conda update gh --channel conda-forge` |
 
     Additional Conda installation options available on the [gh-feedstock page](https://github.com/conda-forge/gh-feedstock#installing-gh).
@@ -290,4 +290,5 @@ Netlify 是静态网站自动部署平台，是目前比较简单的自动化部
 
 **id: "16490d88-ed09-4d74-beea-ff3d7989e25c"**
 
-Netlify token: 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
+Netlify token: APq8byuVFbDt0Mz1oTSwHQCSV5_ePUOQ_OcRiPsUoMM
+GitHub Personal access token: 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
