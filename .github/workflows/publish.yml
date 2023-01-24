@@ -37,7 +37,9 @@ jobs:
       
       - name: add TeX Packages
         run: |
-          tinytex::tlmgr_install(pkgs = "elegantbook")
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+          tinytex::parse_install(text = "LaTeX Error: File `elegantbook.cls' not found.")
         shell: Rscript {0}
         
       - name: Render and Publish 
