@@ -31,15 +31,10 @@ jobs:
 
       - name: setup tinytex
         uses: r-lib/actions/setup-tinytex@v2
+        env:
+          # install full prebuilt version
+          TINYTEX_INSTALLER: TinyTeX
         
-      - name: add tex package
-        run: |
-          tlmgr --version
-          tlmgr option repository ctan
-          tlmgr update --all
-          tlmgr install elegantbook
-          tlmgr list --only-installed
-      
       - name: Render and Publish 
         uses: quarto-dev/quarto-actions/publish@v2
         with:
