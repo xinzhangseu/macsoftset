@@ -16,7 +16,6 @@ draftwatermark
 dvipng
 ebgaramond
 ebgaramond-maths
-elegantbook
 environ
 epstopdf-pkg
 etex-pkg

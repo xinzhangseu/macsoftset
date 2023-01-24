@@ -69,22 +69,7 @@ jobs:
           fc-list | sort
           fc-cache -fsv
 
-      - name: Install Python ENV
-        run: |
-          sudo apt-get install -y virtualenv python3-virtualenv
-          virtualenv -p /usr/bin/python3 $RETICULATE_PYTHON_ENV
-          source $RETICULATE_PYTHON_ENV/bin/activate
-          python -V
-          pip install -r requirements.txt
-          pip list --format=columns
-          deactivate
-
-      - name: Check Python
-        run: |
-          if(!require('reticulate')) install.packages('reticulate')
-          reticulate::py_config()
-        shell: Rscript {0}
-
+     
       - name: Install LaTeX packages
         run: |
           if(!require('tinytex')) install.packages('tinytex')
@@ -101,14 +86,7 @@ jobs:
         run: |
           xvfb-run Rscript -e 'capabilities()'
 
-      - name: Build CmdStan
-        run: |
-          mkdir -p /opt/cmdstan
-          curl -fLo cmdstan-${CMDSTAN_VERSION}.tar.gz https://github.com/stan-dev/cmdstan/releases/download/v${CMDSTAN_VERSION}/cmdstan-${CMDSTAN_VERSION}.tar.gz
-          tar -xzf cmdstan-${CMDSTAN_VERSION}.tar.gz -C /opt/cmdstan/
-          cd ${CMDSTAN}
-          make build
-
+     
       - name: Render book to all format
         # Add any command line argument needed
         run: |
@@ -119,3 +97,5 @@ jobs:
         with:
           target: netlify
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          
+          
