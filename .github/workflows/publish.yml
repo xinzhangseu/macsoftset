@@ -35,7 +35,7 @@ jobs:
       - name: add tex package
         run: |
           tlmgr --version
-          tlmgr option repository ctan
+          tlmgr option repository https://mirrors.aliyun.com/CTAN/systems/texlive/tlnet
           tlmgr install elegantbook
           tlmgr list --only-installed
       
