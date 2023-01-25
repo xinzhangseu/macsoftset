@@ -309,7 +309,364 @@ Netlify 是静态网站自动部署平台，是目前比较简单的自动化部
     $ git add _publish_yml .github/
     $ git commit -m "注释内容"
     $ git push origin main
+### Quarto Books 设置
 
+- _quarto.yml 文件内容
+
+  ```project:
+  type: book
+  output-dir: _book
+  resources: elegantbook.cls 
+  ## 由于生成pdf需要elegantbook 宏包，但该宏包不在 TexLive 仓库中。故将elegantbook.cls文件添加至项目并在此处加resources，可以保证在github action中进行quarto render能够正常进行。
+lang: zh
+book:
+  title: "书名"
+  author: "作者"
+  date: "1/8/2023"
+  chapters:
+    - index.qmd
+    - MacSettings.qmd
+    - Routers.qmd
+    - summary.qmd
+    - references.qmd
+  search: true
+  downloads: [pdf]
+  page-navigation: true
+bibliography: references.bib
+format:
+  html:
+    theme: cosmo
+    crossref:
+      chapters: true
+      eq-prefix: ""
+  pdf:
+    documentclass: elegantbook
+    classoption: [lang=cn,10pt]
+    keep-tex: true
+    include-in-header: 
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body: 
+      text: |
+        \printindex
+    colorlinks: true
+    link-citations: true
+    crossref:
+      chapters: true
+      eq-prefix: ""
+editor: visual
+```
+
+- 安装 R 相依包的 DESCRIPTION 文件内容
+
+  DESCRIPTION
+  
+```Type: Book
+Package: daar
+Title: Mac Soft Setting.
+Version: 0.01
+Authors@R: c(
+    person("Xin", "Zhang", , "x.zhang.seu@gmail.com", role = c("aut", "cre"))
+  )
+URL: https://https://macsoftset.netlify.app/,
+     https://github.com/xinzhangseu/macsoftset/,
+Depends: 
+    R (>= 4.2.0)
+Imports:
+    bayesplot (>= 1.10.0),
+    beanplot,
+    biscale (>= 1.0.0),
+    broom,
+    cartogram,
+    cmdstanr (>= 0.5.3),
+    data.table,
+    datasauRus,
+    downlit,
+    dplyr,
+    echarts4r,
+    emo,
+    emojifont,
+    ganttrify,
+    geodata (>= 0.4.13),
+    geofacet,
+    geomtextpath,
+    gifski,
+    ggalluvial,
+    gganimate,
+    ggbeeswarm,
+    ggbump,
+    ggChernoff,
+    ggdensity,
+    ggeffects,
+    ggExtra,
+    ggforce,
+    ggmosaic,
+    ggnewscale,
+    ggplot2 (>= 3.4.0),
+    ggradar,
+    ggraph (>= 2.1.0),
+    ggrepel,
+    ggridges,
+    ggsignif,
+    ggstats,
+    ggTimeSeries,
+    ggVennDiagram,
+    ggwordcloud,
+    glmnet,
+    gt (>= 0.8.0),
+    HistData,
+    keras,
+    knitr,
+    latex2exp,
+    latticeExtra,
+    likert,
+    lme4,
+    lvplot (>= 0.2.1),
+    magick,
+    pals,
+    patchwork,
+    pdftools,
+    plot3D,
+    plotly (>= 4.10.1),
+    purrr (>= 1.0.0),
+    quarto,
+    ragg,
+    reticulate,
+    rgl,
+    rootSolve,
+    scatterplot3d,
+    sf (>= 1.0.9),
+    showtext,
+    spatstat.explore (>= 3.0.0),
+    spatstat.geom (>= 3.0.0),
+    stars (>= 0.6.0),
+    statebins, 
+    tensorflow,
+    terra (>= 1.6-41),
+    tidycensus,
+    tidygraph,
+    tidyterra (>= 0.3.1),
+    titanic,
+    tikzDevice,
+    treemapify,
+    vcd,
+    vioplot,
+    webshot2,
+    xml2
+Remotes:
+    davidsjoberg/ggbump,
+    giocomai/ganttrify,
+    hadley/emo,
+    corybrunson/ggalluvial,
+    ricardo-bion/ggradar,
+    jbryer/likert
+Suggests:
+    rsconnect
+Additional_repositories: https://mc-stan.org/r-packages/
+Encoding: UTF-8
+License: CC NC ND 4.0```
+
+- TexLive 宏包文件：texlive.txt
+
+```
+animate
+appendixnumberbeamer
+arev
+awesomebox
+bookmark
+cancel
+caption
+carlito
+cm-super
+colortbl
+ctex
+datatool
+dejavu
+doublestroke
+draftwatermark
+dvipng
+ebgaramond
+ebgaramond-maths
+environ
+epstopdf-pkg
+etex-pkg
+everypage
+everysel
+fancyhdr
+filehook
+fira
+fontaxes
+fontawesome5
+grfext
+helvetic
+hyphen-german
+iitem
+jknapltx
+koma-script
+listings
+lm-math
+makeindex
+marginfix
+mathdesign
+mdwtools
+media9
+metalogo
+microtype
+ms
+multirow
+ncntrsbk
+needspace
+newtx
+nimbus15
+oberdiek
+ocgx2
+oldstandard
+opensans
+pgf
+pgfornament
+pgfornament-han
+pgfopts
+pgfplots
+preview
+psnfss
+ragged2e
+realscripts
+relsize
+rsfs
+savesym
+setspace
+smartdiagram
+soul
+sourcecodepro
+sourcesanspro
+sourceserifpro
+standalone
+subfig
+tabu
+tcolorbox
+textpos
+threeparttable
+threeparttablex
+tikz-network
+titlepic
+titlesec
+tocbibind
+tocloft
+trimspaces
+tufte-latex
+type1cm
+ucs
+ulem
+unicode-math
+varwidth
+xcolor
+xecjk
+xltxtra
+xpatch
+xstring
+zhnumber
+zref
+```
+
+- GitHub Action 配置
+
+```on:
+  workflow_dispatch:
+  schedule:
+    # 每周四 早上 7 点
+    - cron: '0 23 * * 3'
+  #push:
+    #branches: main
+  #pull_request:
+    #branches: main
+name: Quarto Publish to Netlify
+env:
+  isExtPR: ${{ github.event.pull_request.head.repo.fork == true }}
+  RUST_BACKTRACE: 1
+  
+jobs:
+  build-deploy:
+    if: "!contains(github.event.head_commit.message, '[docker]')"
+    runs-on: ubuntu-22.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      DISPLAY: ':99.0'
+      RGL_USE_NULL: true
+      LANG: "en_US.UTF-8"
+      TZ: "Asia/Shanghai"
+      RETICULATE_PYTHON_ENV: "/opt/.virtualenvs/r-tensorflow"
+      CMDSTAN_VERSION: "2.29.2"
+      CMDSTAN: "/opt/cmdstan/cmdstan-2.29.2"
+      CMDSTANR_NO_VER_CHECK: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: '2.19.2'
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.2.280
+      - run: |
+          quarto --version
+          quarto pandoc --version
+          pandoc --version
+
+      - name: Install TinyTeX
+        uses: r-lib/actions/setup-tinytex@v2
+        env:
+          # install full prebuilt version
+          TINYTEX_INSTALLER: TinyTeX
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          r-version: '4.2.2'
+          extra-repositories: 'https://mc-stan.org/r-packages'
+
+      # based on the renv lockfile file
+      # - uses: r-lib/actions/setup-renv@v2
+      # based on the DESCRIPTION file
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          needs: book
+
+      - name: Install Fonts From System
+        run: |
+          sudo apt-get install -y fonts-noto-core fonts-noto-cjk fonts-noto-color-emoji
+          fc-list | grep 'noto' | sort
+          fc-list | sort
+          fc-cache -fsv
+
+      - name: Install LaTeX packages
+        run: |
+          if(!require('tinytex')) install.packages('tinytex')
+          tinytex::tlmgr_install(readLines("texlive.txt"))
+        shell: Rscript {0}
+
+      - name: Check TikZ
+        run: |
+          if(!require('tikzDevice')) install.packages('tikzDevice')
+          tikzDevice::tikzTest()
+        shell: Rscript {0}
+
+      - name: Check R and xvfb
+        run: |
+          xvfb-run Rscript -e 'capabilities()'
+
+      - name: Render book to all format
+        # Add any command line argument needed
+        run: |
+          make all
+
+      - name: Render and Publish 
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: netlify
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}```
+          
 **id: "16490d88-ed09-4d74-beea-ff3d7989e25c"**
 
 Netlify token: APq8byuVFbDt0Mz1oTSwHQCSV5_ePUOQ_OcRiPsUoMM GitHub Personal access token: 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
