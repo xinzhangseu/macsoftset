@@ -18,19 +18,19 @@ https://git-scm.com/downloads
 
 ## 注册github账户
 
-1. 打开github官网注册界面
+1.  打开github官网注册界面
 
 https://github.com/join?source=header-home
 
-2. 填入自己的账户名,邮箱和密码.
+2.  填入自己的账户名,邮箱和密码.
 
 选择`free` plan即可.
 
-![](images/Screen Shot 2020-03-14 at 11.30.19 PM.png)
+![](images/Screen%20Shot%202020-03-14%20at%2011.30.19%20PM.png)
 
-3. 选择或者填写一些内容.
+3.  选择或者填写一些内容.
 
-4. 验证邮箱
+4.  验证邮箱
 
 ## Git基础知识
 
@@ -38,11 +38,11 @@ https://github.com/join?source=header-home
 
 主要功能:
 
-* 备份代码.
+-   备份代码.
 
-* 版本管理.
+-   版本管理.
 
-* 协作办公.
+-   协作办公.
 
 git的基本概念:
 
@@ -54,7 +54,6 @@ git的基本概念:
 
 远程仓库(remote directory):本地仓库的东西如果需要托管到github上,就需要在github上创建一个仓库(远程仓库),然后将本地仓库和远程仓库联系起来,这样就可以将本地仓库的内容推送到远程仓库.
 
-
 ## Git配制
 
 ### 安装git之后,需要进行一些全局设置,比如用户名邮箱.
@@ -63,41 +62,43 @@ git的基本概念:
 
 设置的主要命令是`git config`:
 
-```markdown
+``` markdown
 git config --global user.name "your name" 
 git config --global user.email "your email" 
 ```
+
 其中,`--global`是指全局配置,如果不写(或者写为`local`),则只为当前仓库(repository)配置.
 
 如果有多个git用户,这时候需要先确定某个仓库使用的哪个账户.
 
-```markdown
+``` markdown
 git config user.name
 git config user.email 
 ```
 
 查询全局的git账户信息:
 
-```markdown
+``` markdown
 git config --global user.name
 git config --global user.email 
 ```
 
 如果想要去掉全局用户和邮箱设置.
 
-```markdown
+``` markdown
 git config --global --unset user_name
 git config --global --unset user_email
 ```
 
 ### 生成秘钥
 
-```markdown
+``` markdown
 ssh-keygen -t rsa -C "shenxt1990@163.com"
 ```
+
 然后会在`~/.ssh/`文件夹中会产生秘钥文件,我们只需要将公钥(`pub`后缀)的内容拷贝到github中即可.
 
-![](images/Screen Shot 2020-03-17 at 10.13.13 PM.png)
+![](images/Screen%20Shot%202020-03-17%20at%2010.13.13%20PM.png)
 
 对于windows用户,请参考这个帖子:
 
@@ -111,14 +112,15 @@ https://www.jianshu.com/p/95262f5eba7a
 
 首先,创建一个你要当作仓库的文件夹,然后将其设置为工作路径,然后执行.
 
-```markdown
+``` markdown
 mkdir git_test#创建本地文件夹
 cd git_test#进入到该文件夹将其作为工作目录
 git init#创建本地git仓库
 ```
+
 这时候查看目录结构,就可以看到创建了一个名为`.git`的子目录,这就说明创建版本库成功了.
 
-```markdown
+``` markdown
 ls -la
 ```
 
@@ -126,25 +128,26 @@ ls -la
 
 要将一个文件纳入到版本管理,首先需要将其添加到暂存区(stage),然后才能提交到仓库中.
 
-* 使用`git add`命令将文件添加到暂存区:
+-   使用`git add`命令将文件添加到暂存区:
 
 比如我们首先新建一个名为`README.md`的文件,然后将其添加到暂存区.
 
-```markdown
+``` markdown
 touch README.md#创建文件
 git add README.md#将该文件加入到暂存区
 ```
+
 当然也可以使用下面命令将所有修改添加到暂存区:
 
-```markdown
+``` markdown
 git add .
 ```
 
 `.` 是正则表达式,代表任意文件.但是空文件夹是不会添加到暂存区的.
 
-* 使用`git commit`命令将暂存区文件提交到仓库中.
+-   使用`git commit`命令将暂存区文件提交到仓库中.
 
-```markdown
+``` markdown
 git commit #如果暂存区有文件,则将其中的文件提交到仓库
 git commit -m "your note for this commit" #用于注明提交的内容,变更等信息,方便溯源
 ```
@@ -157,102 +160,101 @@ https://www.cnblogs.com/itech/archive/2009/04/17/1438439.html
 
 简单来说,首先在命令行模式下按下字母`i`进入插入模式,在该模式下进行信息的输入.输入结束之后,点击`ESC`退回到命令行模式,然后再输入冒号(`:`).输入wq,保存文件修改退出vi编辑器.
 
-
 ### 查看仓库状态
 
 不论我们是新建了文件,将文件加入暂存区,或者是其他修改等,我们都可以使用`git status`来查看当前的仓库状态.
 
 如果当前没有任何变动.
 
-![](images/Annotation 2020-03-04 103831.png)
+![](images/Annotation%202020-03-04%20103831.png)
 
 如果我们新建了一个文件,然后再次查看状态:
 
 因为我们还没有将其添加到暂存区,因此显示该新建文件为 `Untracted files`
 
-![](images/Annotation 2020-03-04 103937.png)
+![](images/Annotation%202020-03-04%20103937.png)
 
 将文件放入暂存区,然后再查看状态:
 
-![](images/Annotation 2020-03-04 104126.png)
+![](images/Annotation%202020-03-04%20104126.png)
 
 然后再将其进行提交,查看状态.
 
-![](images/Annotation 2020-03-04 104709.png)
+![](images/Annotation%202020-03-04%20104709.png)
 
 ### 查看仓库中的具体修改
 
 如果做过之后修改,我们忘了做了哪些修改,可以使用`git diff`命令来查看具体修改内容.
 
-```rmarkdown
+``` rmarkdown
 git diff #查看所有改动
 git diff README.md #查看具体文件的改动
 ```
+
 比如我们在`test.txt`文件中加入一行,然后查看:
 
-```markdown
+``` markdown
 git diff test.txt
 ```
 
-![](images/Annotation 2020-03-04 105306.png)
+![](images/Annotation%202020-03-04%20105306.png)
 
 可以看到记录了对该文件的修改内容.
 
 > 注意,如果你修改之后已经将其存入暂存区,则`git diff`不会再显示内容.
 
-![](images/Annotation 2020-03-04 105454.png)
+![](images/Annotation%202020-03-04%20105454.png)
 
 ### 查看提交的历史记录
 
 有的时候,你需要查看自己做过哪些提交(commit),来回顾自己的完成部分,这时候需要使用`git log`命令.
 
-```markdown
+``` markdown
 git log #显示所有提交的历史记录
 git log --pretty=oneline #单行显示提交历史记录的内容
 ```
 
-![](images/Annotation 2020-03-04 105927.png)
+![](images/Annotation%202020-03-04%20105927.png)
 
 可以看到我们现在一共进行了4次提交,每次提交的第一行commit之后是该次提交的唯一`ID`.然后后面显示提交者,时间以及一些记录等.
 
 如果提交非常多,需要显示内容精简一些,就需要使用`git log --pretty=oneline`命令.
 
-![](images/Annotation 2020-03-04 110141.png)
-
+![](images/Annotation%202020-03-04%20110141.png)
 
 ### 版本回退
 
 有了`git log`来查看提交的历史记录,我们就可以通过`git reset --hard`来退回到我们需要的某个特定版本.
 
-```markdown
+``` markdown
 git reset --hard HEAD^ # 回退到上一个提交版本
 git reset --hard HEAD^^ # 回退到上上一个提交版本
 git reset --hard 'commit_id' # 会退到 commit_id 指定的提交版本
 ```
+
 使用`git log`我们可以看到每个提交都有一个唯一的commit ID,其中上一个也可以使用`HEAD`代表.因此我们可以退回到上一个版本.比如,我们在最近的一次提交中修改了test.txt,在其中加入一行.
 
-![](images/Annotation 2020-03-04 110543.png)
+![](images/Annotation%202020-03-04%20110543.png)
 
 我们想退回到上一个版本,不想加入这一行,可以使用下面命令.
 
-```markdown
+``` markdown
 git reset --hard HEAD^
 ```
 
 这时候再查看log,可以看到最近的一个commit已经消失,回到了上一个提交.而上一次的修改也已经消失.
 
-![](images/Annotation 2020-03-04 110857.png)
-
+![](images/Annotation%202020-03-04%20110857.png)
 
 ### 回到未来某个版本
 
 退回到原来某个版本之后,如何再回到未来某个版本呢?还是使用`git reset --hard`命令,但是此时使用`git log`命令是无法显示在这之后的提交信息的。但是，通过`git reflog`可以获取到操作命令的历史。
 
-![](images/Annotation 2020-03-04 111241.png)
+![](images/Annotation%202020-03-04%20111241.png)
 
 这时候只要在使用`git reset`命令就可以回到未来的任意一个版本了.而且这时候再使用`git log`也回到了最初的版本提交记录.
 
-![](images/Annotation 2020-03-04 111622.png)
+![](images/Annotation%202020-03-04%20111622.png)
 
 ### 撤销修改
 
@@ -262,51 +264,49 @@ git reset --hard HEAD^
 
 使用如下命令.
 
-```markdown
+``` markdown
 git checkout -- README.md    #如果 README.md 文件在工作区，则丢弃其修改
 git checkout -- .            #丢弃当前目录下所有工作区中文件的修改
 ```
 
 比如我们再`test.txt`中添加另外一行,然后不加入暂存区,然后将其丢弃掉.
 
-![](images/Annotation 2020-03-04 112427.png)
+![](images/Annotation%202020-03-04%20112427.png)
 
 然后运行:
 
-```markdown
+``` markdown
 git checkout -- test.txt
 ```
 
-![](images/Annotation 2020-03-04 112527.png)
-
+![](images/Annotation%202020-03-04%20112527.png)
 
 #### 丢弃暂存区的修改
 
 如果已经运行了`git add`将修改放入了暂存区,可以通过下列命令进行丢弃:
 
-```markdown
+``` markdown
 git reset HEAD README.md #将 README.md 恢复到 HEAD 提交版本的状态
 git checkout -- README.md
 ```
 
-![](images/Annotation 2020-03-04 112956.png)
+![](images/Annotation%202020-03-04%20112956.png)
 
 然后将其删除掉.
 
-![](images/Annotation 2020-03-04 113351.png)
+![](images/Annotation%202020-03-04%20113351.png)
 
 ### 删除文件
 
 在文件未添加到暂存区之前,对想删除文件可以直接物理删除.或者通过`git checkout -- file`来丢弃.如果文件已经被提交,则需要`git rm`来删除.
 
-```markdown
+``` markdown
 git rm Readme.md #删除已经提交(commit)过的文件
 ```
 
 > 注意: `git rm`只能删除已经提交到版本库中的文件.其他状态的文件直接用这个命令操作是出错的.
 
-![](images/Annotation 2020-03-04 204036.png)
-
+![](images/Annotation%202020-03-04%20204036.png)
 
 ## git的分支管理
 
@@ -318,20 +318,19 @@ master分支时git默认创建的分支.因此基本上所有的开发都是以�
 
 比如下图中,我们首先以master作为模板复制得到`feature A`的分支.`feature A`分支主要用来开发另外一个新的特性,等开发完毕之后,再将其合并到master分支中即可.
 
-![](images/Annotation 2020-03-04 205634.png)
-
+![](images/Annotation%202020-03-04%20205634.png)
 
 ### 查看分支
 
 使用`git branch`命令查看分支信息.
 
-```markdown
+``` markdown
 git branch        #查看本地分支信息
 git branch -v     #查看相对详细的本地分支信息
 git branch -av     #查看包括远程仓库在内的分支信息
 ```
 
-![](images/Annotation 2020-03-04 210006.png)
+![](images/Annotation%202020-03-04%20210006.png)
 
 可以看到我们现在只有一个分支,也就是master,然后星号标识的就是当前所在的分支.
 
@@ -339,7 +338,7 @@ git branch -av     #查看包括远程仓库在内的分支信息
 
 使用 `git branch new.name`用来创建新的分支.
 
-```markdown
+``` markdown
 git branch development ##创建一个新的名字叫做development的分支
 ```
 
@@ -349,14 +348,14 @@ git branch development ##创建一个新的名字叫做development的分支
 
 使用`git checkout`命令来切换分支.比如我们先新建一个development的分支,然后切换到该分支下.
 
-```markdown
+``` markdown
 git branch development
 git checkout development
 ```
 
 当然也可以使用下面命令直接创建并切换到新建的分支下.
 
-```markdown
+``` markdown
 git checkout -b development
 ```
 
@@ -368,20 +367,21 @@ git checkout -b development
 
 创建并切换到新的development分支,可以使用:
 
-```markdown
+``` markdown
 git switch -c development 
 ```
 
 直接切换到已有分支:
 
-```markdown
+``` markdown
 git switch master
 ```
-![](images/Annotation 2020-03-04 210500.png)
+
+![](images/Annotation%202020-03-04%20210500.png)
 
 我们下面在development分支下面再新建一个`development.txt`文件,然后写入一些内容.
 
-![](images/Annotation 2020-03-04 211512.png)
+![](images/Annotation%202020-03-04%20211512.png)
 
 可以看到此时有一个新建的development.txt文件.如果我们切换到master分支,还是有该文件,但是对该文件内容进行修改,则因为没有加入到暂存区,因此并不会进行版本控制.
 
@@ -391,23 +391,24 @@ git switch master
 
 首先需要切换回最终需要合并的分支,也就是`master`分支,然后再合并.
 
-```markdown
+``` markdown
 git checkout master   #切换回master分支
 git merge development #将development分支中的修改合并回master分支
 ```
-![](images/Annotation 2020-03-04 212532.png)
+
+![](images/Annotation%202020-03-04%20212532.png)
 
 ### 删除分支
 
 当之前创建的分支,完成了它的使命,如Bug修复完,分支合并以后,这个分支就不在需要了,就可以删除它.
 
-```markdown
+``` markdown
 git branch -d development #删除development分支
 ```
 
 如果分支没有合并到master分支中,直接使用上面命令会报错,可以使用下面的命令强制删除.
 
-```markdown
+``` markdown
 git branch -D development
 ```
 
@@ -421,27 +422,25 @@ git branch -D development
 
 我们合并一下试试:
 
-```markdown
+``` markdown
 ![](images/Screen Shot 2020-03-11 at 9.20.30 PM.png)
 ```
 
 可以看到报错,Git告诉我们,`readme.txt`文件存在冲突,必须手动解决冲突后再提交.`git status`也可以告诉我们冲突的文件:
 
-```
-git status
-```
+    git status
 
-![](images/Screen Shot 2020-03-11 at 9.25.20 PM.png)
+![](images/Screen%20Shot%202020-03-11%20at%209.25.20%20PM.png)
 
 这时候我们可以使用`vi`或者其他工具打开冲突的文件,在这就是`readme.txt`:
 
-![](images/Screen Shot 2020-03-11 at 9.32.06 PM.png)
+![](images/Screen%20Shot%202020-03-11%20at%209.32.06%20PM.png)
 
 Git用`<<<<<<<`，`=======`，`>>>>>>>`标记出不同分支的内容，我们修改如下后保存：
 
 我们将这些记号删除,然后保留自己想要保留的修改就可.然后重新提交.
 
-```markdown
+``` markdown
 git add .
 git commit-m 'remove conflict'
 ```
@@ -449,7 +448,6 @@ git commit-m 'remove conflict'
 这时候就完成了合并.可以删除development分支了.
 
 这时候使用`git log`也可以看到分支的提交情况.使用`git log --graph`可以观察分支合并图.
-
 
 ### 分支策略
 
@@ -461,7 +459,6 @@ git commit-m 'remove conflict'
 
 你和你的小伙伴们每个人都在`dev`分支上干活，每个人都有自己的分支，时不时地往`dev`分支上合并就可以了。
 
-
 ## 远程仓库(GitHub)
 
 上面的所有命令都是针对本地仓库的操作.当我们希望多个人来协作时,会将代码发布到一个统一的远程仓库,然后多个人在本地操作以后,再推送到远程仓库.其他人协作时,需要先同步远程仓库的内容,再推送自己的修改.这就要用到了我们最常用的github.
@@ -470,34 +467,34 @@ git commit-m 'remove conflict'
 
 比如我们上面所建立的`git_test`本地仓库,我们需要将其添加到github的远程仓库中.
 
-```markdown
+``` markdown
 git remote add origin your_remote_git_repo #为本地仓库添加远程仓库
 ```
+
 其中`your_remote_git_repo`是在github中创建的.我们先创建一下,然后进行尝试.
 
-格式为`git@github.com:user.name/repo_name`.
-当然,也可以直接使用远程仓库的网址:
+格式为`git@github.com:user.name/repo_name`. 当然,也可以直接使用远程仓库的网址:
 
 https://github.com/jaspershen/git_test
 
-![](images/Annotation 2020-03-04 213542.png)
+![](images/Annotation%202020-03-04%20213542.png)
 
 ### 推送到远程仓库
 
 使用`git push`将本地仓库的内容推送到远程仓库.
 
-```markdown
+``` markdown
 git push -u origin master #第一次推送时使用,可以简化后面的推送或者拉取命令使用
 git push origin master #将本地master分支推送到origin远程分支,后面之后就可以直接使用该命令推送
 ```
 
-![](images/Annotation 2020-03-04 214807.png)
+![](images/Annotation%202020-03-04%20214807.png)
 
 以后再推送的时候,就使用`git push`就可以了.
 
 这时候可以看到github中已经有了内容.
 
-![](images/Annotation 2020-03-04 214930.png)
+![](images/Annotation%202020-03-04%20214930.png)
 
 ### 从远程仓库获取最新内容
 
@@ -505,20 +502,20 @@ git push origin master #将本地master分支推送到origin远程分支,后面�
 
 可以通过`git fetch`和`git pull`来获取远程仓库的内容.
 
-```markdown
+``` markdown
 git fetch origin master    
 git pull origin master
 ```
 
 两者之间的区别:
 
-* `git fetch`是仅仅获取远程仓库的更新内容,并不会自动做合并.
+-   `git fetch`是仅仅获取远程仓库的更新内容,并不会自动做合并.
 
-* `git pull`在获取远程仓库的内容后,会自动做合并,可以看成`git fetch`之后`git merge`.所以更推荐这个命令.
+-   `git pull`在获取远程仓库的内容后,会自动做合并,可以看成`git fetch`之后`git merge`.所以更推荐这个命令.
 
 ### 查看远程仓库信息
 
-```markdown
+``` markdown
 git remote -v
 ```
 
@@ -526,7 +523,7 @@ git remote -v
 
 如果你本地没有仓库,希望从已有的远程仓库上复制一份代码,那么你需要`git clone`.
 
-```markdown
+``` markdown
 git clone https://github.com/jaspershen/git_test #通过 https 协议,克隆Github上git仓库的源码
 git clone jaspershen@github.com/git/git_test #通过ssh协议,克隆Github上git仓库的源码
 ```
@@ -549,13 +546,13 @@ https://github.com/onlynight/ReadmeDemo/tree/master/Readmes/GitIgnore
 
 比如我们在`shenxt`账户上有一个远程仓库,创建一个`jaspershen`分支.
 
-```markdown
+``` markdown
 git branch jaspershen
 ```
 
 然后将该分支推送到远程仓库.
 
-```markdown
+``` markdown
 git push origin jaspershen
 ```
 
@@ -571,20 +568,20 @@ git push origin jaspershen
 
 ### 克隆项目
 
-```markdown
+``` markdown
 git clone git@github_jaspershen:shenxt/github_test4.git
 cd github_test4
 ```
 
 这时候查看分支,
 
-```markdown
+``` markdown
 git branch
 ```
 
 会看到只有master分支.所以要创建远程仓库的分支到本地.
 
-```markdown
+``` markdown
 git checkout -b jaspershen origin/jaspershen
 ```
 
@@ -594,38 +591,39 @@ git checkout -b jaspershen origin/jaspershen
 
 这时候合作者`jaspershen`可以在分支下正常工作,然后提交,合并,并推送到远程仓库.
 
-* 创建文件
+-   创建文件
 
-```markdown
+``` markdown
 touch heloworld.txt
 ```
+
 然后在该文件下写入一行文字:
 
-```markdown
+``` markdown
 test from jaspershen
 ```
 
-* 提交
+-   提交
 
 然后加入到暂存区并提交.
 
-```markdown
+``` markdown
 git add helloworld.txt
 git commit -m "test from jaspershen"
 ```
 
-* 合并分支
+-   合并分支
 
-```
-git checkout master
-git merge jaspershen
-```
+<!-- -->
 
-* 推送到远程仓库
+    git checkout master
+    git merge jaspershen
+
+-   推送到远程仓库
 
 然后可以将其推送到远程分支(包括master和jaspershen分支).注意是直接推送到`shenxt`账户的远程仓库.
 
-```markdown
+``` markdown
 git push origin master
 git push origin jaspershen
 ```
@@ -644,35 +642,32 @@ https://www.liaoxuefeng.com/wiki/896043488029600/900004111093344
 
 比如我们在`shenxt`账户下也创建一个`helloworld.txt`文件.然后提交,推送到远程仓库.
 
-```markdown
+``` markdown
 git push origin master
 ```
 
 会得到下面的报错:
 
-```
- ! [rejected]        master -> master (fetch first)
-error: failed to push some refs to 'git@github_shenxt:shenxt/github_test4.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-```
+     ! [rejected]        master -> master (fetch first)
+    error: failed to push some refs to 'git@github_shenxt:shenxt/github_test4.git'
+    hint: Updates were rejected because the remote contains work that you do
+    hint: not have locally. This is usually caused by another repository pushing
+    hint: to the same ref. You may want to first integrate the remote changes
+    hint: (e.g., 'git pull ...') before pushing again.
+    hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 我们先使用`git pull`抓取分支的最新提交.
 
-```markdown
+``` markdown
 git pull
 ```
+
 也失败了,因为没有指定本地分支与远程`origin/xxx`分支的链接，根据提示，设置本地分支和远程分支的链接：
 
-
-```markdown
+``` markdown
 git branch --set-upstream-to=origin/master master
 git branch --set-upstream-to=origin/jaspershen jaspershen
 ```
-
 
 然后在pull.
 
@@ -680,20 +675,19 @@ git branch --set-upstream-to=origin/jaspershen jaspershen
 
 ### 多人协作的工作模式
 
-1. 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
+1.  首先，可以试图用`git push origin <branch-name>`推送自己的修改；
 
-2. 如果推送失败，则因为远程分支比你的本地更新，需要先用`git pull`试图合并；
+2.  如果推送失败，则因为远程分支比你的本地更新，需要先用`git pull`试图合并；
 
-3. 如果合并有冲突，则解决冲突，并在本地提交；
+3.  如果合并有冲突，则解决冲突，并在本地提交；
 
-4. 没有冲突或者解决掉冲突后，再用`git push origin <branch-name>`推送就能成功！
+4.  没有冲突或者解决掉冲突后，再用`git push origin <branch-name>`推送就能成功！
 
-5. 如果`git pull`提示`no tracking information`，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`。
+5.  如果`git pull`提示`no tracking information`，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`。
 
 这就是多人协作的工作模式，一旦熟悉了，就非常简单。
 
 ## How to work together use git and github for metID (for Han)
-
 
 ### Set up you git and github
 
@@ -701,21 +695,21 @@ Make sure you have installed github desktop in you mac.
 
 Open you terminal, and then type this code to set up you local git account:
 
-```markdown
+``` markdown
 git config --global user.name your_github_user_name
 git config --global user.email your_github_user_email
 ```
 
 After you set up your github account, then try to confirm if you are successful:
 
-```markdown
+``` markdown
 git config --global user.name
 git config --global user.email
 ```
 
 Then, you should set up a SSH with you local git and github, still in your terminal:
 
-```markdown
+``` markdown
 #chang directory
 cd ~/.ssh
 ssh-keygen -t rsa -C "your_github_email"
@@ -723,45 +717,43 @@ ssh-keygen -t rsa -C "your_github_email"
 
 Then open your `/ssh` folder, and you will see there is a `id_rsd.pub`. Open this file and copy all the content. Go to you github website, in the right top concer, cliker your picture, and then select `Settings`. Then select `SSH and GPG keys`, and then click `New SSH key`. For the `Title`, just type a name you want, and then paste the keys you copied from `id_rsd.pub` to the key area. And then click `Add SSH key`.
 
-![](images/Screen Shot 2020-03-27 at 10.16.52 AM.png)
+![](images/Screen%20Shot%202020-03-27%20at%2010.16.52%20AM.png)
 
 ### Accept the invitation
 
 I will send a collaborator invitation email to Han, you will receive this email and please recept the inviation.
 
-![](images/Screen Shot 2020-03-27 at 9.55.43 AM.png)
+![](images/Screen%20Shot%202020-03-27%20at%209.55.43%20AM.png)
 
 ### Git clone the repository
 
 Open you terminal, and then set to the work directoy you want to keep the metID. Then type this code to clone the metID repo:
 
-```markdown
+``` markdown
 git clone git@github.com:jaspershen/metID.git
 ```
 
 Then change you work directory into `metID` folder:
 
-```markdown
+``` markdown
 cd metID
 ```
 
-Then check you branch: 
+Then check you branch:
 
-```branch
+``` branch
 git branch
 ```
 
 You will find you only have the master branch. Then chnage to `hanyah` branch:
 
-```markdown
+``` markdown
 git checkout -b hanyah origin/hanyah
 ```
 
 Then you can see that you are in branch already:
 
-```
-gitbranch
-```
+    gitbranch
 
 ### Add the repo into the github desktop
 
@@ -779,11 +771,14 @@ Now please open your Rstudio, and open the `metID` project. Now you can work wit
 
 After your finish a file or document, and then you can open your github desktop, you can see what you have changed in your documents or files. And then please type some note in your summary, and then click `Commit to hanyah`. And then push them to github by click `Fetch origin`.
 
-![](images/Screen Shot 2020-03-27 at 10.32.52 AM.png)
+![](images/Screen%20Shot%202020-03-27%20at%2010.32.52%20AM.png)
 
----
+------------------------------------------------------------------------
 
-<div id="disqus_thread"></div>
+::: {#disqus_thread}
+:::
+
+```{=html}
 <script>
 
 /**
@@ -802,5 +797,5 @@ s.setAttribute('data-timestamp', +new Date());
 (d.head || d.body).appendChild(s);
 })();
 </script>
+```
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
