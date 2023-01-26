@@ -60,6 +60,7 @@ bibliography: references.bib
 
 format:
   html:
+    html-math-method: katex
     theme: cosmo
     crossref:
       chapters: true

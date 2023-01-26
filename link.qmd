@@ -1,1 +1,11 @@
-1. [如何在 Emacs 中使用 Magit 管理 Git 项目](https://linux.cn/article-10564-1.html)
+## 常用学习链接
+- Magit and Git 
+  1. [如何在 Emacs 中使用 Magit 管理 Git 项目](https://linux.cn/article-10564-1.html)
+  2. [Magit 使用技巧](https://devbins.github.io/post/magit/)
+  4. [认识 Magit](http://blog.lujun9972.win/emacs-document/blog/2017/03/01/%E8%AE%A4%E8%AF%86magit/index.html)
+  2. [GitHub入门指南](https://zhuanlan.zhihu.com/p/337959303)
+- Emacs
+  1. [专业 Emacs 入门教程](https://www.zhihu.com/column/c_1440829147212279808)
+  2. [Emacs 光标移动](https://docs.huihoo.com/homepage/shredderyin/emacs_move.html)
+- MacPorts  
+  1. [Mac Ports Guide](https://guide.macports.org/chunked/index.html)

@@ -1,0 +1,18 @@
+1. 在emacs中运行R出现下面警告信息
+
+```default
+During startup - Warning messages:
+1: Setting LC_CTYPE failed, using "C"
+2: Setting LC_COLLATE failed, using "C" 
+3: Setting LC_TIME failed, using "C" 
+4: Setting LC_MESSAGES failed, using "C" 
+5: Setting LC_MONETARY failed, using "C" 
+```
+
+在.emacs中添加如下配置可解决
+```{lisp}
+(unless (getenv "LC_ALL") (setenv "LC_ALL" "en_US.UTF-8"))
+```
+
+
+
