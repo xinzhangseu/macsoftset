@@ -14,6 +14,8 @@ book:
     - index.qmd
     - MacSettings.qmd
     - git.qmd
+    - link.qmd
+    - prob.qmd
     - Routers.qmd
     - summary.qmd
     - references.qmd

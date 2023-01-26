@@ -1,6 +1,6 @@
-1. 在emacs中运行R出现下面警告信息
+1.  在emacs中运行R出现下面警告信息
 
-```default
+``` default
 During startup - Warning messages:
 1: Setting LC_CTYPE failed, using "C"
 2: Setting LC_COLLATE failed, using "C" 
@@ -10,9 +10,7 @@ During startup - Warning messages:
 ```
 
 在.emacs中添加如下配置可解决
+
 ```{lisp}
 (unless (getenv "LC_ALL") (setenv "LC_ALL" "en_US.UTF-8"))
 ```
-
-
-
