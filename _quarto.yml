@@ -13,7 +13,7 @@ book:
   chapters:
     - index.qmd
     - MacSettings.qmd
-    - Git and GitHub
+    - git.qmd
     - Routers.qmd
     - summary.qmd
     - references.qmd
