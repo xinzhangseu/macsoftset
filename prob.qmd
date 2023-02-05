@@ -1,3 +1,6 @@
+## 相关问题
+
+
 1.  在emacs中运行R出现下面警告信息
 
 ``` default
@@ -11,6 +14,6 @@ During startup - Warning messages:
 
 在.emacs中添加如下配置可解决
 
-```{lisp}
+```default
 (unless (getenv "LC_ALL") (setenv "LC_ALL" "en_US.UTF-8"))
 ```

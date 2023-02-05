@@ -28,7 +28,7 @@ PVE 本身就是 debian 的变体，直接 apt install 就可以了。（网上�
 
 aliddns.php代码如下：
 
-```{php}
+```default
 <?php
 #需要配置的项
 define('ACCESSKEYID','(访问ID)'); #阿⾥云⽤户密钥ID 获取⽅法 https://help.aliyun.com/knowledge_detail/38738.html
@@ -128,7 +128,7 @@ Main();
 ```
 
 Ros新建Script，代码如下：
-```
+```default
 #PPPoE
 :local pppoe "pppoe-out1"
 
