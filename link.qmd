@@ -7,5 +7,27 @@
 - Emacs
   1. [专业 Emacs 入门教程](https://www.zhihu.com/column/c_1440829147212279808)
   2. [Emacs 光标移动](https://docs.huihoo.com/homepage/shredderyin/emacs_move.html)
+  3. [Emacs Academic Tools](https://weikaichen.gitee.io/notes/emacs-academic-tools/)
 - MacPorts  
   1. [Mac Ports Guide](https://guide.macports.org/chunked/index.html)
+
+## Quarto Workflows
+
+1. [Quarto workflows](https://openscapes.github.io/quarto-website-tutorial/quarto-workflows/)
+
+2. [Quarto：Markdown 又何必只是 Markdown](https://ld246.com/article/1668847262356)
+
+2. [Awesome Quarto Awesome](https://github.com/mcanouil/awesome-quarto#html-documents)
+
+3. [Use R to generate a Quarto blogpost](https://themockup.blog/posts/2022-11-08-use-r-to-generate-a-quarto-blogpost/)
+
+4. [Andrew Heiss's Homepage](https://www.andrewheiss.com/)
+
+5. [Adding a blog to your existing Quarto website](https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/)
+
+6. [R 语言空间数据分析实战](https://github.com/evalparse/spatial-data-analysis-in-action)
+
+7. [quarto-website-tutorial](https://github.com/Openscapes/quarto-website-tutorial)
+## 其他
+
+1. [毫末科技培训资料](https://haomo-tech.com/haomotraining/)
