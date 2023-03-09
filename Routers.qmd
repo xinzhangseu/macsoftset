@@ -2,37 +2,33 @@
 
 ## 备忘录
 
-- ROS: admin@82.1+!1#1
-- ESXI: root@82.25+Z!2349
-- OpenWrt: root@82.3+!0m0
-- VPN L2TP: xzhang@!1@1
-- Docker Ports
-  - NAS: admin@82.245:1819
-  - Calibre: admin@NAS:8083+!0m0
-  - qBittorrent:admin@NAS:8085+!0@0
-  - 
-  
-  
-  
-  
+-   ROS: admin\@82.1+!1#1
+-   ESXI: root\@82.25+Z!2349
+-   OpenWrt: root\@82.3+!0m0
+-   VPN L2TP: xzhang\@!1\@1
+-   Docker Ports
+    -   NAS: admin\@82.245:1819
+    -   Calibre: admin\@NAS:8083+!0m0
+    -   qBittorrent:admin\@NAS:8085+!0\@0
+    -   
 
 ## Router OS动态更新阿里域名云解析
+
 主要是利用vercel和github，采用PHP语言实现
 
 ### 创建访问控制RAM的AccessKey
 
 这部分内容主要参考博文[RouterOS利用aliyun的API接口实现DDNS动态解析](https://www.77bx.com/aliyun-ddns-api.html)中的第一部分内容。
 
-1、阿里云网站 --> 产品 --> 安全 --> [应用身份服务](https://ram.console.aliyun.com/)，这个就是控制API ，用户管理，新建用户，填写用户名和勾上“为该用户自动生成AccessKey”，保存好这个accesskey。
+1、阿里云网站 --\> 产品 --\> 安全 --\> [应用身份服务](https://ram.console.aliyun.com/)，这个就是控制API ，用户管理，新建用户，填写用户名和勾上"为该用户自动生成AccessKey"，保存好这个accesskey。
 
-
-2、策略管理 --> 自定义授权策略，新建授权策略，选择空白模版，授权策略名称随便填（如alidns），策略内容为下面的内容（修改下面内容中的域名为你自己要做DDNS的域名）
+2、策略管理 --\> 自定义授权策略，新建授权策略，选择空白模版，授权策略名称随便填（如alidns），策略内容为下面的内容（修改下面内容中的域名为你自己要做DDNS的域名）
 
 action是api的接口，只接受AddDomainRecord（增加域名解析），DescribeDomainRecords（输出域名解析列表）和UpdateDomainRecord（修改域名解析记录）
 
 Resource是指被授权的具体对象，这边domain/abc.com需要修改成你自己的域名domain/xxx.com。这样就是授权对象是该域名
 
-```default
+``` default
 {
   "Version": "1",
   "Statement": [
@@ -48,17 +44,17 @@ Resource是指被授权的具体对象，这边domain/abc.com需要修改成你�
   ]
 }
 ```
+
 3、用户管理，对上面创建的用户，点击授权，选择刚才自定义创建的策略，确定。
 
 ### PHP制作aliyun API动态解析接口
 
+-   PHP源码Git仓库创建
 
-+ PHP源码Git仓库创建
+    1.  利用[xinzhangseu/vercel-php](https://github.com/xinzhangseu/vercel-php)仓库模板在自己的github账户新建仓库
+    2.  将api文件夹中的index.php更改为下面内容(源码来自[77bx/alidns-api-php](https://github.com/77bx/alidns-api-php/blob/master/alidns.php)), 并将"Location: //xxxxx.xxxx.com/" 改为后面自己vercel生成的网址即可。
 
-  1. 利用[xinzhangseu/vercel-php](https://github.com/xinzhangseu/vercel-php)仓库模板在自己的github账户新建仓库
-  2. 将api文件夹中的index.php更改为下面内容(源码来自[77bx/alidns-api-php](https://github.com/77bx/alidns-api-php/blob/master/alidns.php)), 并将"Location: //xxxxx.xxxx.com/" 改为后面自己vercel生成的网址即可。
-  
-```default
+``` default
 <?php
 /***
 * Alidns-api-php V1.3
@@ -144,8 +140,8 @@ function ssl_post($url){
   curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
   curl_setopt($curl, CURLOPT_POST, 1);
   curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-	curl_setopt($curl, CURLOPT_HEADER, 0);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HEADER, 0);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
   $tmpInfo = curl_exec($curl);
   if (curl_errno($curl)) {
      echo 'Errno'.curl_error($curl);
@@ -224,13 +220,13 @@ if(empty($data['DomainRecords'])){
 }
 ```
 
-3. 
+3.  
 
 ### ROS script
 
-
 Ros新建Script，代码如下：
-```default
+
+``` default
 #aliyun Access Key
 :local id "阿里云的AccessKey ID"
 :local secret "阿里云的AccessKey secret"
@@ -260,18 +256,10 @@ Ros新建Script，代码如下：
 }
 ```
 
-
-
-
-
-
 ## 相关链接
 
-1. [RouterOS配合PHP实现动态更新阿里域名云解析](https://hnsac.com/2022/04/12/RouterOS%E9%85%8D%E5%90%88PHP%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E9%98%BF%E9%87%8C%E5%9F%9F%E5%90%8D%E4%BA%91%E8%A7%A3%E6%9E%90/)
+1.  [RouterOS配合PHP实现动态更新阿里域名云解析](https://hnsac.com/2022/04/12/RouterOS%E9%85%8D%E5%90%88PHP%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E9%98%BF%E9%87%8C%E5%9F%9F%E5%90%8D%E4%BA%91%E8%A7%A3%E6%9E%90/)
 
-2. [RouterOS利用aliyun的API接口实现DDNS动态解析](https://www.77bx.com/aliyun-ddns-api.html)
+2.  [RouterOS利用aliyun的API接口实现DDNS动态解析](https://www.77bx.com/aliyun-ddns-api.html)
 
-3. [Examples & Sample Projects for Vercel](https://github.com/juicyfx/vercel-examples)
-
-
-
+3.  [Examples & Sample Projects for Vercel](https://github.com/juicyfx/vercel-examples)

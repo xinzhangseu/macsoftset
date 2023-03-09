@@ -20,13 +20,13 @@ https://git-scm.com/downloads
 
 1.  打开github官网注册界面
 
-https://github.com/join?source=header-home
+    https://github.com/join?source=header-home
 
 2.  填入自己的账户名,邮箱和密码.
 
-选择`free` plan即可.
+    选择`free` plan即可.
 
-![](images/Screen%20Shot%202020-03-14%20at%2011.30.19%20PM.png)
+    ![](images/Screen%20Shot%202020-03-14%20at%2011.30.19%20PM.png){width=100%}
 
 3.  选择或者填写一些内容.
 
@@ -166,21 +166,21 @@ https://www.cnblogs.com/itech/archive/2009/04/17/1438439.html
 
 如果当前没有任何变动.
 
-![](images/Annotation%202020-03-04%20103831.png)
+![](images/Annotation%202020-03-04%20103831.png){width=100%}
 
 如果我们新建了一个文件,然后再次查看状态:
 
 因为我们还没有将其添加到暂存区,因此显示该新建文件为 `Untracted files`
 
-![](images/Annotation%202020-03-04%20103937.png)
+![](images/Annotation%202020-03-04%20103937.png){width=100%}
 
 将文件放入暂存区,然后再查看状态:
 
-![](images/Annotation%202020-03-04%20104126.png)
+![](images/Annotation%202020-03-04%20104126.png){width=100%}
 
 然后再将其进行提交,查看状态.
 
-![](images/Annotation%202020-03-04%20104709.png)
+![](images/Annotation%202020-03-04%20104709.png){width=100%}
 
 ### 查看仓库中的具体修改
 
@@ -197,13 +197,13 @@ git diff README.md #查看具体文件的改动
 git diff test.txt
 ```
 
-![](images/Annotation%202020-03-04%20105306.png)
+![](images/Annotation%202020-03-04%20105306.png){width=100%}
 
 可以看到记录了对该文件的修改内容.
 
 > 注意,如果你修改之后已经将其存入暂存区,则`git diff`不会再显示内容.
 
-![](images/Annotation%202020-03-04%20105454.png)
+![](images/Annotation%202020-03-04%20105454.png){width=100%}
 
 ### 查看提交的历史记录
 
@@ -214,13 +214,13 @@ git log #显示所有提交的历史记录
 git log --pretty=oneline #单行显示提交历史记录的内容
 ```
 
-![](images/Annotation%202020-03-04%20105927.png)
+![](images/Annotation%202020-03-04%20105927.png){width=100%}
 
 可以看到我们现在一共进行了4次提交,每次提交的第一行commit之后是该次提交的唯一`ID`.然后后面显示提交者,时间以及一些记录等.
 
 如果提交非常多,需要显示内容精简一些,就需要使用`git log --pretty=oneline`命令.
 
-![](images/Annotation%202020-03-04%20110141.png)
+![](images/Annotation%202020-03-04%20110141.png){width=100%}
 
 ### 版本回退
 
@@ -234,7 +234,7 @@ git reset --hard 'commit_id' # 会退到 commit_id 指定的提交版本
 
 使用`git log`我们可以看到每个提交都有一个唯一的commit ID,其中上一个也可以使用`HEAD`代表.因此我们可以退回到上一个版本.比如,我们在最近的一次提交中修改了test.txt,在其中加入一行.
 
-![](images/Annotation%202020-03-04%20110543.png)
+![](images/Annotation%202020-03-04%20110543.png){width=100%}
 
 我们想退回到上一个版本,不想加入这一行,可以使用下面命令.
 
@@ -244,17 +244,17 @@ git reset --hard HEAD^
 
 这时候再查看log,可以看到最近的一个commit已经消失,回到了上一个提交.而上一次的修改也已经消失.
 
-![](images/Annotation%202020-03-04%20110857.png)
+![](images/Annotation%202020-03-04%20110857.png){width=100%}
 
 ### 回到未来某个版本
 
 退回到原来某个版本之后,如何再回到未来某个版本呢?还是使用`git reset --hard`命令,但是此时使用`git log`命令是无法显示在这之后的提交信息的。但是，通过`git reflog`可以获取到操作命令的历史。
 
-![](images/Annotation%202020-03-04%20111241.png)
+![](images/Annotation%202020-03-04%20111241.png){width=100%}
 
 这时候只要在使用`git reset`命令就可以回到未来的任意一个版本了.而且这时候再使用`git log`也回到了最初的版本提交记录.
 
-![](images/Annotation%202020-03-04%20111622.png)
+![](images/Annotation%202020-03-04%20111622.png){width=100%}
 
 ### 撤销修改
 
@@ -271,7 +271,7 @@ git checkout -- .            #丢弃当前目录下所有工作区中文件的�
 
 比如我们再`test.txt`中添加另外一行,然后不加入暂存区,然后将其丢弃掉.
 
-![](images/Annotation%202020-03-04%20112427.png)
+![](images/Annotation%202020-03-04%20112427.png){width=100%}
 
 然后运行:
 
@@ -279,7 +279,7 @@ git checkout -- .            #丢弃当前目录下所有工作区中文件的�
 git checkout -- test.txt
 ```
 
-![](images/Annotation%202020-03-04%20112527.png)
+![](images/Annotation%202020-03-04%20112527.png){width=100%}
 
 #### 丢弃暂存区的修改
 

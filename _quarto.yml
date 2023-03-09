@@ -20,7 +20,6 @@ book:
     - summary.qmd
     - references.qmd
     
-    
   site-url: https://macset.xzhang.ink/
   ##style: "docked"
   downloads: [pdf]
@@ -67,6 +66,8 @@ format:
     crossref:
       chapters: true
       eq-prefix: ""
+    number-depth: 3
+
   pdf:
     documentclass: elegantbook
     classoption: [lang=cn,10pt]
