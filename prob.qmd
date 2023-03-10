@@ -1,6 +1,6 @@
 ## 相关问题
 
-1.  在emacs中运行R出现下面警告信息
+ 1.在emacs中运行R出现下面警告信息
 
 ``` default
 During startup - Warning messages:
@@ -16,3 +16,30 @@ During startup - Warning messages:
 ``` default
 (unless (getenv "LC_ALL") (setenv "LC_ALL" "en_US.UTF-8"))
 ```
+
+2.Mac OS M1系统在R中安装VGAM包出现下面问题
+
+```default
+make: /opt/R/arm64/bin/gfortran: No such file or directory
+make: *** [mvt.o] Error 1
+```
+
+  解决方法如下：
+
++ 利用Homebrew安装gcc
+  ```brew install gcc```
++ 在Home文件夹下创建文件```~/.R/Makevars
+  
+  ```default
+  mkdir -p ~/.R
+  touch ~/.R/Makevars
+  ```
++ 添加如下信息至文件 ```~/.R/Makevars```
+
+  ```default
+  FC = /opt/homebrew/Cellar/gcc/12.2.0/bin/gfortran
+  F77 = /opt/homebrew/Cellar/gcc/12.2.0/bin/gfortran
+  FLIBS = -L/opt/homebrew/Cellar/gcc/12.2.0/lib/gcc/12
+  ```
+
+
