@@ -82,7 +82,6 @@ Github使用SSH配置， 初始需要以下三个步骤
 
 设置成功后，即可不需要账号密码clone和push代码
 
-
 **注意之后在clone仓库的时候要使用ssh的url，而不是https！**
 
 ### **验证原理**
@@ -134,7 +133,7 @@ SSH登录安全性由非对称加密保证，产生密钥时，一次产生两�
     **Conda**
 
     | Install:                                 | Upgrade:                                |
-    |------------------------------------|------------------------------------|
+    |------------------------------------------|-----------------------------------------|
     | `conda install gh --channel conda-forge` | `conda update gh --channel conda-forge` |
 
     Additional Conda installation options available on the [gh-feedstock page](https://github.com/conda-forge/gh-feedstock#installing-gh).
@@ -310,11 +309,12 @@ Netlify 是静态网站自动部署平台，是目前比较简单的自动化部
     $ git add _publish_yml .github/
     $ git commit -m "注释内容"
     $ git push origin main
+
 ### Quarto Books 设置
 
-- _quarto.yml 文件内容
+-   \_quarto.yml 文件内容
 
-```default
+``` default
 project:
   type: book
   output-dir: _book
@@ -360,11 +360,11 @@ format:
 editor: visual
 ```
 
-- 安装 R 相依包的 DESCRIPTION 文件内容
+-   安装 R 相依包的 DESCRIPTION 文件内容
 
-  DESCRIPTION
-  
-```default
+    DESCRIPTION
+
+``` default
 Type: Book
 Package: daar
 Title: Mac Soft Setting.
@@ -471,12 +471,9 @@ Encoding: UTF-8
 License: CC NC ND 4.0
 ```
 
+-   TexLive 宏包文件：texlive.txt
 
-
-- TexLive 宏包文件：texlive.txt
-
-
- ```default
+``` default
 animate
 appendixnumberbeamer
 arev
@@ -576,9 +573,9 @@ zhnumber
 zref
 ```
 
-- GitHub Action 配置
+-   GitHub Action 配置
 
-```default
+``` default
 on:
   workflow_dispatch:
   schedule:
@@ -675,12 +672,10 @@ jobs:
           target: netlify
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 ```
-          
-
 
 ### Mac Port install log
 
-```default
+``` default
 To use this bootstrap version of cmake instead of the usual cmake port, add
     the following lines to the Portfile:
     
