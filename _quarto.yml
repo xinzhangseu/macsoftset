@@ -63,6 +63,12 @@ format:
   html:
     html-math-method: katex
     theme: cosmo
+    grid:
+      sidebar-width: 260px
+      body-width: 900px
+      margin-width: 260px
+      gutter-width: 1.5rem
+    css: style.css
     crossref:
       chapters: true
       eq-prefix: ""

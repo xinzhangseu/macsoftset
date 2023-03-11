@@ -1,3 +1,3 @@
 # 前言 {.unnumbered}
 
-This is a Quarto book.
+How do you work in Quarto? You can use whichever tool you\'re comfortable with (RStudio, Jupyter, GitHub, VS Code, etc). Developing your quarto site will have the same basic workflow, no matter which tool you use. It is very iterative, and each is explored more below. mystyleHow do you work in Quarto? You can use whichever tool you\'re comfortable with (RStudio, Jupyter, GitHub, VS Code, etc). Developing your quarto site will have the same basic workflow, no matter which tool you use. It is very iterative, and each is explored more below. mystyle
