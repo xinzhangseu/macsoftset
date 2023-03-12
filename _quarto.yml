@@ -33,6 +33,7 @@ book:
     ## logo: "images/openscapes_hex.png"
     pinned: true
     align: center
+    style: "docked"
     tools: 
       - icon: globe
         href: https://www.xzhang.ink
