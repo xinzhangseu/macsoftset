@@ -1,0 +1,33 @@
+## 常用学习链接
+
+-   Magit and Git
+    1.  [如何在 Emacs 中使用 Magit 管理 Git 项目](https://linux.cn/article-10564-1.html)
+    2.  [Magit 使用技巧](https://devbins.github.io/post/magit/)
+    3.  [认识 Magit](http://blog.lujun9972.win/emacs-document/blog/2017/03/01/%E8%AE%A4%E8%AF%86magit/index.html)
+    4.  [GitHub入门指南](https://zhuanlan.zhihu.com/p/337959303)
+-   Emacs
+    1.  [专业 Emacs 入门教程](https://www.zhihu.com/column/c_1440829147212279808)
+    2.  [Emacs 光标移动](https://docs.huihoo.com/homepage/shredderyin/emacs_move.html)
+    3.  [Emacs Academic Tools](https://weikaichen.gitee.io/notes/emacs-academic-tools/)
+-   MacPorts
+    1.  [Mac Ports Guide](https://guide.macports.org/chunked/index.html)
+
+## Quarto Workflows
+
+1.  [Quarto workflows](https://openscapes.github.io/quarto-website-tutorial/quarto-workflows/)
+
+2.  [Quarto：Markdown 又何必只是 Markdown](https://ld246.com/article/1668847262356)
+
+3.  [Awesome Quarto Awesome](https://github.com/mcanouil/awesome-quarto#html-documents)
+
+4.  [Use R to generate a Quarto blogpost](https://themockup.blog/posts/2022-11-08-use-r-to-generate-a-quarto-blogpost/)
+
+5.  [Andrew Heiss's Homepage](https://www.andrewheiss.com/)
+
+6.  [Adding a blog to your existing Quarto website](https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/)
+
+7.  [R 语言空间数据分析实战](https://github.com/evalparse/spatial-data-analysis-in-action)
+
+8.  [quarto-website-tutorial](https://github.com/Openscapes/quarto-website-tutorial) \## 其他
+
+9.  [毫末科技培训资料](https://haomo-tech.com/haomotraining/)

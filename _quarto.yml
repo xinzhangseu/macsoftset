@@ -12,11 +12,11 @@ book:
   
   chapters:
     - index.qmd
-    - MacSettings.qmd
-    - git.qmd
-    - link.qmd
-    - prob.qmd
-    - Routers.qmd
+    - 1-MacSettings.qmd
+    - 2-git.qmd
+    - 3-link.qmd
+    - 4-prob.qmd
+    - 5-Routers.qmd
     - summary.qmd
     - references.qmd
     
