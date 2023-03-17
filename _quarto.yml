@@ -8,7 +8,7 @@ lang: zh
 book:
   title: "科研工具介绍"
   author: "张鑫"
-  date: "1/8/2023"
+  date: today
   
   chapters:
     - index.qmd
@@ -36,7 +36,7 @@ book:
     style: "docked"
     tools: 
       - icon: globe
-        href: https://www.xzhang.ink
+        href: https://macset.xzhang.ink
         text: "xzhang.ink"
       - icon: github
         href: https://github.com/xinzhangseu/macsoftset
