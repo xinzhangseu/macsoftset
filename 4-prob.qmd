@@ -26,11 +26,9 @@ make: *** [mvt.o] Error 1
 
 解决方法如下：
 
--   利用Homebrew安装gcc 
+-   利用Homebrew安装gcc
 
-    ```
-    brew install gcc
-    ```
+        brew install gcc
 
 -   在Home文件夹下创建文件`~/.R/Makevars`
 

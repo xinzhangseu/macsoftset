@@ -1,0 +1,79 @@
+## 苹果系统常用软件
+
+## 屏幕录制转Gif图片
+
+[**Kap**](https://getkap.co/)
+
+- [Download for Apple (M1)](https://getkap.co/api/download/arm64)
+- [Download for Apple (Intel)](https://getkap.co/api/download/x64)
+
+---
+
+[**LICEcap**](https://www.cockos.com/licecap/)
+
+*simple animated screen captures*\
+\
+![](https://www.cockos.com/licecap/licecap_rules.gif) *\**\
+\
+LICEcap can capture an area of your desktop and save it directly to .GIF (for viewing in web browsers, etc) or .LCF (see below).\
+\
+LICEcap is an intuitive but flexible application (for Windows and now OSX), that is designed to be lightweight and function with high performance.\
+\
+LICEcap is easy to use: [**view a demo**](https://www.cockos.com/licecap/how_to_licecap.gif) (output is [**here**](https://www.cockos.com/licecap/demo2.gif)).\
+\
+In addition to .GIF, LICEcap supports its own native lossless .LCF file format, which allows for higher compression ratios than .GIF, higher quality (more than 256 colors per frame), and more accurate timestamping. If you record to .LCF, you can play back the .LCF files within [**REAPER**](http://www.reaper.fm/) (and/or use it to convert to .gif or another video format).\
+\
+LICEcap is GPL free software, each download package includes the source.\
+\
+Features and options:
+
+-   Record directly to .GIF or .LCF.
+
+-   Move the screen capture frame while recording.
+
+-   Pause and restart recording, with optional inserted text messages.
+
+-   Global hotkey (shift+space) to toggle pausing while recording
+
+-   Adjustable maximum recording framerate, to allow throttling CPU usage.
+
+-   Basic title frame, with or without text.
+
+-   Record mouse button presses.
+
+-   Display elapsed time in the recording.
+
+Requirements:
+
+-   Windows: Windows XP/Vista/7/8/8.1/10/11 (might work with reduced functionality on older versions)
+
+-   OSX: macOS 10.7-12.x Intel 64-bit or M1 (old versions: v1.30 supports macOS 10.6, and v1.28 supports macOS 10.4 and PPC)
+
+-   Linux: apparently works with WINE
+
+-   A reasonably fast CPU
+
+-   A healthy amount of RAM (1GB+, especially when encoding to LCF)
+
+\
+Discuss LICEcap in the [**Cockos Forums**](http://www.cockos.com/forum/forumdisplay.php?f=44).\
+\
+
+------------------------------------------------------------------------
+
+**Download**\
+\
+[**LICEcap v1.32 for Windows**](https://www.cockos.com/licecap/licecap132-install.exe) (Jun 8 2022) (250kb installer)\
+[**LICEcap v1.32 for macOS**](https://www.cockos.com/licecap/licecap132.dmg) (Jun 8 2022) (876kb DMG)\
+
+-   Windows: Prevent positioning window offscreen \[issue 72\]
+
+-   Windows: sign installer/executable
+
+**Source code**
+
+-   *git clone https://www-dev.cockos.com/licecap/licecap.git*\
+    \
+    Official GitHub mirror: [**github.com/justinfrankel/licecap**](https://www.github.com/justinfrankel/licecap.git)
+
+Send GPL patches to [submissions\@cockos.com]{.underline}.\
