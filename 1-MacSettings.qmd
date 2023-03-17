@@ -133,7 +133,7 @@ SSH登录安全性由非对称加密保证，产生密钥时，一次产生两�
     **Conda**
 
     | Install:                                 | Upgrade:                                |
-    |------------------------------------------|-----------------------------------------|
+    |------------------------------------|------------------------------------|
     | `conda install gh --channel conda-forge` | `conda update gh --channel conda-forge` |
 
     Additional Conda installation options available on the [gh-feedstock page](https://github.com/conda-forge/gh-feedstock#installing-gh).
