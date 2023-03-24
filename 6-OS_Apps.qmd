@@ -77,3 +77,7 @@ Discuss LICEcap in the [**Cockos Forums**](http://www.cockos.com/forum/forumdisp
     Official GitHub mirror: [**github.com/justinfrankel/licecap**](https://www.github.com/justinfrankel/licecap.git)
 
 Send GPL patches to [submissions\@cockos.com]{.underline}.\
+
+
+
+
